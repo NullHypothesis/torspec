@@ -401,7 +401,7 @@
   This section specifies the format of BridgeDB's metrics.  Each metrics
   file is formatted as follows:
 
-    "bridgedb-stats-end" YYYY-MM-DD HH:MM:SS (NSEC s) NL
+    "bridgedb-metrics-end" YYYY-MM-DD HH:MM:SS (NSEC s) NL
         [At start, exactly once.]
 
         YYYY-MM-DD HH:MM:SS defines the end (in UTC) of the included
@@ -409,9 +409,9 @@
         default).
 
         Example:
-          bridgedb-stats-end 2019-09-18 00:33:44 (86400 s)
+          bridgedb-metrics-end 2019-09-18 00:33:44 (86400 s)
 
-    "bridgedb-stats-version" VERSION NL
+    "bridgedb-metrics-version" VERSION NL
         [Exactly once.]
 
         VERSION determines the version of the metrics format.  As the
@@ -419,12 +419,12 @@
         version is 1 -- the first iteration of the metrics format.
 
         Example:
-          bridgedb-stats-version 1
+          bridgedb-metrics-version 1
 
-    "bridgedb-metric-count" METRICS_KEY COUNT NL
+    "bridgedb-metric-count" METRIC_KEY COUNT NL
         [Any number.]
 
-        METRICS_KEY determines a metrics key, which consists of several
+        METRIC_KEY determines a metrics key, which consists of several
         fields, separated by a period:
 
         DISTRIBUTION "." TRANSPORT "." CC/EMAIL "." "success" | "fail" "." RESERVED
@@ -457,7 +457,7 @@
         implementations.
 
         COUNT is the approximate number of requests for the given
-        METRICS_KEY.
+        METRIC_KEY.
 
         Examples:
           bridgedb-metric-count https.scramblesuit.zz.fail.none 100
