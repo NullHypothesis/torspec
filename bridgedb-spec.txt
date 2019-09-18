@@ -437,13 +437,14 @@
         includes "obfs2", "obfs3", "obfs4", "scramblesuit", and "fte".
         These pluggable transports will change in the future.
 
-        CC/EMAIL refers to a two-letter country code iff DISTRIBUTION is
-        "moat" or "https"; or to an email provider iff DISTRIBUTION is
-        "email".  We use two reserved country codes, "??" and "zz".
-        "??" denotes that we couldn't map an IP address to its country,
-        e.g., because our geolocation API was unable to.  "zz" denotes a
-        proxy IP address, e.g., Tor exit relays.  The two allowed email
-        providers are "gmail" and "riseup".
+        CC/EMAIL refers to a two-letter country code of the user's IP
+        address iff DISTRIBUTION is "moat" or "https"; or to an email
+        provider iff DISTRIBUTION is "email".  We use two reserved
+        country codes, "??" and "zz".  "??" denotes that we couldn't map
+        an IP address to its country, e.g., because our geolocation API
+        was unable to.  "zz" denotes a proxy IP address, e.g., Tor exit
+        relays.  The two allowed email providers are "gmail" and
+        "riseup".
 
         The next field is either "success" or "fail", depending on if
         the BridgeDB request was successful or not.  A request is
@@ -456,8 +457,9 @@
         currently set to "none" and should be ignored by
         implementations.
 
-        COUNT is the approximate number of requests for the given
-        METRIC_KEY.
+        COUNT is the approximate number of user requests for the given
+        METRIC_KEY.  We round up the number of requests to the next
+        multiple of 10 to preserve some user privacy.
 
         Examples:
           bridgedb-metric-count https.scramblesuit.zz.fail.none 100
